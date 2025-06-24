@@ -69,6 +69,7 @@ public class Test {
     private static void performAppAutomationSteps(AndroidDriver driver) {
         try {
             //You need to change the xpath according to your app which you can find using appium inspector
+            //I have added only 4 elements you can add more
             //  Click the Profile tab
             WebElement profileTab = driver.findElement(By.xpath(
                     "//android.widget.ImageView[@content-desc=\"Profile\nTab 4 of 4\"]"
