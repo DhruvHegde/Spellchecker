@@ -17,11 +17,11 @@ image_paths = sys.argv[1:]
 tool = language_tool_python.LanguageTool('en-US')
 
 for image_path in image_paths:
-    print(f"\n🔍 Processing: {image_path}")
+    print(f"\n Processing: {image_path}")
 
     gray_img = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
     if gray_img is None:
-        print(f"❌ Error: Unable to load image '{image_path}'")
+        print(f" Error: Unable to load image '{image_path}'")
         continue
 
     # OCR setup
@@ -62,7 +62,7 @@ for image_path in image_paths:
 
     # Spelling error summary
     if incorrect_words:
-        print("\n❌ Spelling Errors Found:")
+        print("\n Spelling Errors Found:")
         for word, issues in incorrect_words:
             print(f"- {word}: {issues}")
     else:
