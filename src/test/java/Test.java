@@ -23,7 +23,7 @@ public class Test {
         try {
             //  Launch the App
             driver = new AndroidDriver(new URL("http://localhost:4723/"), desiredCapabilities);
-            System.out.println("✅ App launched successfully!");
+            System.out.println("App launched successfully!");
 
             //  Wait for app to fully load
             Thread.sleep(5000);
@@ -109,7 +109,7 @@ public class Test {
             runPythonOCR(ss4);
 
         } catch (Exception e) {
-            System.err.println("❌ Automation Step Failed: " + e.getMessage());
+            System.err.println(" Automation Step Failed: " + e.getMessage());
         }
     }
 
@@ -117,7 +117,7 @@ public class Test {
         File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         try {
             FileUtils.copyFile(src, new File(path));
-            System.out.println("📸 Screenshot saved: " + path);
+            System.out.println(" Screenshot saved: " + path);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -141,13 +141,13 @@ public class Test {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             while ((line = reader.readLine()) != null) {
-                System.out.println("🔍 Python OCR Output: " + line);
+                System.out.println(" Python OCR Output: " + line);
             }
 
             BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
             String errorLine;
             while ((errorLine = errorReader.readLine()) != null) {
-                System.err.println("❌ Python Error: " + errorLine);
+                System.err.println(" Python Error: " + errorLine);
             }
 
             process.waitFor();
