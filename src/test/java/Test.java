@@ -21,19 +21,19 @@ public class Test {
         AndroidDriver driver = null;
 
         try {
-            // ✅ Launch the App
+            //  Launch the App
             driver = new AndroidDriver(new URL("http://localhost:4723/"), desiredCapabilities);
             System.out.println("✅ App launched successfully!");
 
-            // ✅ Wait for app to fully load
+            //  Wait for app to fully load
             Thread.sleep(5000);
 
-            // ⏸️ Wait for user before proceeding
+            // ⏸ Wait for user before proceeding
             Scanner scanner = new Scanner(System.in);
             System.out.println("Press ENTER to start automation...");
             scanner.nextLine();
 
-            // ✅ Perform click automation with screenshots
+            // Perform click automation with screenshots
             performAppAutomationSteps(driver);
 
         } catch (MalformedURLException | InterruptedException e) {
@@ -41,7 +41,7 @@ public class Test {
         } finally {
             if (driver != null) {
                 driver.quit();
-                System.out.println("✅ App closed successfully!");
+                System.out.println("App closed successfully!");
             }
         }
     }
@@ -49,16 +49,18 @@ public class Test {
     private static DesiredCapabilities getDesiredCapabilities() {
         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
 
-        // ✅ Platform & device settings
+        //  Platform & device settings
+        //Make sure you change this to your device capabilities
+        
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
         desiredCapabilities.setCapability(MobileCapabilityType.PLATFORM_VERSION, "16.0");
         desiredCapabilities.setCapability(MobileCapabilityType.DEVICE_NAME, "emulator-5554");
         desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
 
-        // ✅ Specify app package (Direct launch)
+        //  Specify app package (Direct launch)
         desiredCapabilities.setCapability("appPackage", "com.ta.wallet.tawallet");
 
-        // ✅ Auto-grant permissions to bypass pop-ups
+        // Auto-grant permissions to bypass pop-ups
         desiredCapabilities.setCapability("autoGrantPermissions", true);
 
         return desiredCapabilities;
@@ -66,7 +68,8 @@ public class Test {
 
     private static void performAppAutomationSteps(AndroidDriver driver) {
         try {
-            // ✅ Click the Profile tab
+            //You need to change the xpath according to your app which you can find using appium inspector
+            //  Click the Profile tab
             WebElement profileTab = driver.findElement(By.xpath(
                     "//android.widget.ImageView[@content-desc=\"Profile\nTab 4 of 4\"]"
             ));
@@ -76,7 +79,7 @@ public class Test {
             grabScreenshot(driver, ss1);
             runPythonOCR(ss1);
 
-            // ✅ Click Citizen Info
+            //  Click Citizen Info
             WebElement citizenInfo = driver.findElement(By.xpath(
                     "//android.view.View[@content-desc=\"Citizen Info\"]"
             ));
@@ -129,7 +132,7 @@ public class Test {
         try {
             ProcessBuilder processBuilder = new ProcessBuilder(
                     "python",
-                    "C:\\Users\\DHRUV HEGDE\\IdeaProjects\\ocr test\\src\\test1.py",
+                    "YOUR PATH TO PYTHON FILE",//make sure u add your test.py path here
                     imagepath
             );
 
@@ -148,7 +151,7 @@ public class Test {
             }
 
             process.waitFor();
-            System.out.println("✅ OCR script executed!");
+            System.out.println(" OCR script executed!");
 
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
