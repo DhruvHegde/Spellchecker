@@ -66,4 +66,4 @@ for image_path in image_paths:
         for word, issues in incorrect_words:
             print(f"- {word}: {issues}")
     else:
-        print("\n✅ No spelling errors detected!")
+        print("\n No spelling errors detected!")
